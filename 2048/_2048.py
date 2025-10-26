@@ -21,14 +21,14 @@ TILE_MARGIN = 15
 BOARD_PADDING = 30
 HEADER_HEIGHT = 150
 
-# Colors
-BG_COLOR = (250, 248, 239)
-BOARD_COLOR = (187, 173, 160)
-TEXT_DARK = (119, 110, 101)
-TEXT_LIGHT = (249, 246, 242)
-OVERLAY_COLOR = (238, 228, 218, 200)
-BUTTON_COLOR = (143, 122, 102)
-BUTTON_HOVER_COLOR = (160, 140, 120)
+# Colors - Warm, organic palette inspired by natural landscapes
+BG_COLOR = (210, 225, 215)  # Soft sage green
+BOARD_COLOR = (165, 185, 175)  # Muted teal
+TEXT_DARK = (80, 70, 60)  # Warm dark brown
+TEXT_LIGHT = (255, 250, 240)  # Warm white
+OVERLAY_COLOR = (190, 205, 195, 220)  # Translucent sage
+BUTTON_COLOR = (180, 160, 130)  # Warm sandy brown
+BUTTON_HOVER_COLOR = (200, 180, 150)  # Lighter sandy brown
 
 # Game States
 class GameState(Enum):
@@ -345,11 +345,12 @@ class GameUI:
                 texture = self.texture_manager.get_texture(value)
                 self.screen.blit(texture, (x, y))
                 
-                # Draw number
+                # Draw number with warmer colors
                 if value != 0:
                     font_size = 60 if value < 100 else (50 if value < 1000 else 40)
                     font = pygame.font.Font(None, font_size)
-                    text_color = TEXT_DARK if value <= 4 else TEXT_LIGHT
+                    # Use warm brown for lighter tiles, warm white for darker
+                    text_color = (90, 75, 60) if value <= 4 else (255, 250, 235)
                     text = font.render(str(value), True, text_color)
                     text_rect = text.get_rect(center=(x + TILE_SIZE // 2, y + TILE_SIZE // 2))
                     self.screen.blit(text, text_rect)
@@ -415,12 +416,12 @@ class GameUI:
         overlay.fill(BG_COLOR)
         self.screen.blit(overlay, (0, 0))
         
-        # Game over text
+        # Game over text with warmer, organic colors
         if won:
-            text = self.large_font.render("YOU WIN!", True, (100, 180, 100))
+            text = self.large_font.render("YOU WIN!", True, (120, 160, 90))  # Warm green
             subtitle = self.medium_font.render("You reached 2048!", True, TEXT_DARK)
         else:
-            text = self.large_font.render("GAME OVER", True, (180, 100, 100))
+            text = self.large_font.render("GAME OVER", True, (180, 120, 90))  # Warm orange-brown
             subtitle = self.medium_font.render("No more moves!", True, TEXT_DARK)
         
         text_rect = text.get_rect(center=(SCREEN_WIDTH // 2, 200))
