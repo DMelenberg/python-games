@@ -1,5 +1,4 @@
 # 2048 Game - Deluxe Edition
-
 # Requirements
 
 pygame>=2.5.0

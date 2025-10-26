@@ -115,7 +115,8 @@ def test_all_features():
     print("\n7. TESTING GAME ASSETS")
     print("-" * 60)
     import os
-    assets_dir = os.path.join(os.path.dirname(__file__), 'assets')
+    # Assets are in parent directory relative to tests/
+    assets_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'assets')
     
     sound_count = len([f for f in os.listdir(os.path.join(assets_dir, 'sounds')) 
                        if f.endswith('.wav')])

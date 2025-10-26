@@ -41,7 +41,7 @@ setup(
     install_requires=requirements,
     entry_points={
         "console_scripts": [
-            "2048=2048.game:main",
+            "2048=game:main",
         ],
     },
     include_package_data=True,

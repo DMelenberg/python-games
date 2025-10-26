@@ -509,6 +509,9 @@ class GameUI:
             moved = False
             merged = False
             
+            # Capture score before move to detect merges
+            old_score = self.game.score
+            
             if event.key == pygame.K_LEFT:
                 moved = self.game.move_left()
             elif event.key == pygame.K_RIGHT:
@@ -520,13 +523,11 @@ class GameUI:
             
             if moved:
                 self.sound_manager.play('move')
-                # Check if any tiles merged by comparing old and new scores
-                old_score = self.game.score
-                tile_added = self.game.add_new_tile()
-                
+                # Check if any tiles merged by comparing scores
                 if self.game.score > old_score:
                     self.sound_manager.play('merge')
                 
+                tile_added = self.game.add_new_tile()
                 if tile_added:
                     self.sound_manager.play('new_tile')
                 
