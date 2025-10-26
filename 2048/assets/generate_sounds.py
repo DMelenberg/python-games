@@ -46,8 +46,9 @@ def save_wav(filename, samples, sample_rate=44100):
         wav_file.setnchannels(1)  # Mono
         wav_file.setsampwidth(2)  # 16-bit
         wav_file.setframerate(sample_rate)
-        for sample in samples:
-            wav_file.writeframes(struct.pack('h', sample))
+        # Write all samples at once for efficiency
+        packed_samples = struct.pack(f'{len(samples)}h', *samples)
+        wav_file.writeframes(packed_samples)
 
 def main():
     sounds_dir = os.path.dirname(__file__) + '/sounds'
