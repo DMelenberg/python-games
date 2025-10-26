@@ -1,0 +1,5 @@
+# 2048 Game - Deluxe Edition
+# Requirements
+
+pygame>=2.5.0
+pillow>=10.0.0
