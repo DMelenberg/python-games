@@ -5,9 +5,12 @@ Tests all major features and components.
 import os
 os.environ['SDL_VIDEODRIVER'] = 'dummy'
 
+import sys
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 import pygame
-from _2048 import (GameUI, GameState, Game2048, SoundManager, 
-                   TextureManager, Button)
+from game import (GameUI, GameState, Game2048, SoundManager, 
+                  TextureManager, Button)
 
 def test_all_features():
     """Test all game features comprehensively."""

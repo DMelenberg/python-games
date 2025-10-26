@@ -2,7 +2,7 @@
 
 Welcome to **2048 Deluxe Edition**! This is a beautifully redesigned Python-based version of the popular puzzle game with stunning visuals, smooth animations, and immersive sound effects. Combine tiles to reach the 2048 tile in this lifelike indie gaming experience!
 
-![Game Screenshot](game_screenshot.png)
+![Game Screenshot](docs/new_design_showcase.png)
 
 ## ✨ New Features - Deluxe Edition
 
@@ -35,23 +35,40 @@ Welcome to **2048 Deluxe Edition**! This is a beautifully redesigned Python-base
 ```plaintext
 2048/
 │
-├── _2048.py                      # Enhanced game code with all features
-├── _2048_original.py             # Original version (backup)
-├── test_2048.py                  # Unit tests for the game's logic
-├── assets/
-│   ├── sounds/                   # Sound effects (WAV format)
+├── __init__.py                       # Package initialization
+├── __main__.py                       # Entry point for `python -m 2048`
+├── game.py                           # Main game code with all features
+├── run.py                            # Convenient run script
+├── requirements.txt                  # Python dependencies
+├── setup.py                          # Package setup for installation
+├── MANIFEST.in                       # Package manifest
+├── README.md                         # This file
+│
+├── tests/                            # Test suite
+│   ├── __init__.py
+│   ├── test_game.py                  # Unit tests for game logic
+│   └── test_comprehensive.py        # Comprehensive feature tests
+│
+├── assets/                           # Game assets
+│   ├── sounds/                       # Sound effects (WAV format)
 │   │   ├── move.wav
 │   │   ├── merge.wav
 │   │   ├── win.wav
 │   │   ├── lose.wav
 │   │   ├── click.wav
 │   │   └── new_tile.wav
-│   ├── textures/                 # High-quality tile textures (PNG format)
-│   │   ├── tile_0.png to tile_2048.png
+│   ├── textures/                     # High-quality tile textures (PNG)
+│   │   ├── tile_*.png                # Tiles 0, 2, 4, 8, ..., 2048
 │   │   └── background.png
-│   ├── generate_sounds.py        # Sound generation script
-│   └── generate_textures.py      # Texture generation script
-└── README.md                     # This file
+│   ├── generate_sounds.py            # Sound generation script
+│   ├── generate_textures.py          # Original texture generator
+│   └── generate_textures_artistic.py # Artistic texture generator
+│
+└── docs/                             # Documentation and screenshots
+    ├── REDESIGN_SUMMARY.md
+    ├── IMPLEMENTATION_COMPLETE.md
+    ├── original_game.py              # Original version (backup)
+    └── *.png                         # Screenshots
 ```
 
 ## How to Play 🕹️
@@ -77,10 +94,14 @@ Welcome to **2048 Deluxe Edition**! This is a beautifully redesigned Python-base
 
 To install dependencies, run:
 ```bash
+pip install -r requirements.txt
+# or manually:
 pip install pygame pillow
 ```
 
 ## How to Run ▶️
+
+### Quick Start
 
 1. Clone the repository:
     ```bash
@@ -88,22 +109,45 @@ pip install pygame pillow
     cd python-games/2048
     ```
 
-2. Run the game:
+2. Install dependencies:
     ```bash
-    python _2048.py
+    pip install -r requirements.txt
     ```
 
-3. To run the tests:
+3. Run the game (choose one method):
     ```bash
-    python -m unittest test_2048.py
+    # Method 1: Using the run script
+    python run.py
+    
+    # Method 2: As a Python module
+    python -m 2048
+    
+    # Method 3: Direct execution (from 2048 directory)
+    cd 2048
+    python game.py
     ```
 
-4. (Optional) To regenerate assets:
-    ```bash
-    cd assets
-    python generate_textures.py
-    python generate_sounds.py
-    ```
+### Running Tests
+
+Run all tests:
+```bash
+# From the 2048 directory
+python -m pytest tests/
+# or
+python -m unittest discover tests/
+# or run individual test files
+python tests/test_game.py
+python tests/test_comprehensive.py
+```
+
+### Regenerating Assets (Optional)
+
+If you want to modify and regenerate textures or sounds:
+```bash
+cd assets
+python generate_textures_artistic.py  # Generate artistic textures
+python generate_sounds.py              # Generate sound effects
+```
 
 ## Features 🎮
 

@@ -1,5 +1,11 @@
 import unittest
-from _2048 import Game2048
+import sys
+import os
+
+# Add parent directory to path
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from game import Game2048
 
 class TestGame2048(unittest.TestCase):
     def setUp(self):
