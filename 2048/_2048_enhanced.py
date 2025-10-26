@@ -6,11 +6,7 @@ from enum import Enum
 
 # Initialize Pygame
 pygame.init()
-try:
-    pygame.mixer.init()
-except pygame.error:
-    # Audio device not available (common in test environments)
-    print("Warning: Audio device not available. Continuing without sound.")
+pygame.mixer.init()
 
 # Screen Configuration
 SCREEN_WIDTH = 600
@@ -50,12 +46,6 @@ class SoundManager:
         """Load all sound effects."""
         sounds_dir = os.path.join(os.path.dirname(__file__), 'assets', 'sounds')
         try:
-            # Check if mixer is initialized
-            if not pygame.mixer.get_init():
-                print("Warning: Pygame mixer not initialized. Sounds disabled.")
-                self.enabled = False
-                return
-            
             self.sounds['move'] = pygame.mixer.Sound(os.path.join(sounds_dir, 'move.wav'))
             self.sounds['merge'] = pygame.mixer.Sound(os.path.join(sounds_dir, 'merge.wav'))
             self.sounds['win'] = pygame.mixer.Sound(os.path.join(sounds_dir, 'win.wav'))
@@ -68,7 +58,6 @@ class SoundManager:
                 sound.set_volume(0.3)
         except Exception as e:
             print(f"Warning: Could not load sounds: {e}")
-            self.enabled = False
     
     def play(self, sound_name):
         """Play a sound effect if enabled."""

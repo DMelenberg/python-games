@@ -1,52 +1,96 @@
-# 2048 Game 🎲
+# 2048 Game - Deluxe Edition 🎮✨
 
-Welcome to **2048**! This is a Python-based version of the popular puzzle game where the objective is to combine tiles with the same value to reach the elusive **2048** tile. Slide the tiles, combine matching numbers, and try to reach the highest score!
+Welcome to **2048 Deluxe Edition**! This is a beautifully redesigned Python-based version of the popular puzzle game with stunning visuals, smooth animations, and immersive sound effects. Combine tiles to reach the 2048 tile in this lifelike indie gaming experience!
+
+![Game Screenshot](game_screenshot.png)
+
+## ✨ New Features - Deluxe Edition
+
+### 🎨 Visual Enhancements
+- **High-Quality Textures**: Beautiful gradient tiles with realistic shadows and highlights
+- **Rich Visual Effects**: Subtle patterns, inner shadows, and professional lighting effects
+- **Textured Background**: Elegant background with sophisticated patterns
+- **Smooth UI**: Polished interface with rounded corners and modern design
+- **Enhanced Typography**: Clear, readable fonts with proper contrast
+
+### 🔊 Audio System
+- **Dynamic Sound Effects**: 
+  - Tile movement sounds
+  - Satisfying merge effects
+  - Triumphant win fanfare
+  - Game over audio cues
+  - Menu click feedback
+  - New tile appearance sounds
+- **Audio Control**: Toggle sound on/off through the settings menu
+
+### 🎯 User Interface
+- **Main Menu**: Professional start screen with Play, Settings, and Quit options
+- **Settings Menu**: Control game preferences including sound toggle
+- **Pause System**: Press ESC to pause/resume gameplay
+- **Game Over Screens**: Beautiful win/lose overlays with score display
+- **Score Tracking**: Current score and best score displays
 
 ## Project Structure 📂
 
 ```plaintext
 2048/
 │
-├── 2048.py              # Main code for the 2048 game
-├── test_2048.py         # Unit tests for the game's logic
-└── README.md            # Documentation for the 2048 game
+├── _2048.py                      # Enhanced game code with all features
+├── _2048_original.py             # Original version (backup)
+├── test_2048.py                  # Unit tests for the game's logic
+├── assets/
+│   ├── sounds/                   # Sound effects (WAV format)
+│   │   ├── move.wav
+│   │   ├── merge.wav
+│   │   ├── win.wav
+│   │   ├── lose.wav
+│   │   ├── click.wav
+│   │   └── new_tile.wav
+│   ├── textures/                 # High-quality tile textures (PNG format)
+│   │   ├── tile_0.png to tile_2048.png
+│   │   └── background.png
+│   ├── generate_sounds.py        # Sound generation script
+│   └── generate_textures.py      # Texture generation script
+└── README.md                     # This file
 ```
 
 ## How to Play 🕹️
 
-1. **Objective**: Combine tiles with the same value to create tiles with higher values, ultimately reaching the 2048 tile. The game ends when you either reach 2048 (win) or run out of possible moves (lose).
+1. **Objective**: Combine tiles with the same value to create tiles with higher values, ultimately reaching the 2048 tile.
+
 2. **Controls**:
-   - **LEFT Arrow**: Slide tiles left
-   - **RIGHT Arrow**: Slide tiles right
-   - **UP Arrow**: Slide tiles up
-   - **DOWN Arrow**: Slide tiles down
+   - **Arrow Keys**: Slide tiles in any direction (↑ ↓ ← →)
+   - **ESC**: Pause/Resume game
+   - **Mouse**: Navigate menus and click buttons
 
 3. **Game Mechanics**:
-   - Each move slides all tiles in the chosen direction.
-   - Tiles with the same value combine to form a new tile with double the value (e.g., two tiles with 2 combine to form a 4).
-   - After each move, a new tile (2 or 4) is added to an empty cell.
+   - Each move slides all tiles in the chosen direction
+   - Tiles with the same value combine to form a new tile with double the value
+   - After each move, a new tile (2 or 4) appears in a random empty cell
+   - Game continues until you reach 2048 (win) or have no valid moves (lose)
 
 ## Requirements 🛠️
 
 - Python 3.6 or higher
 - Pygame library
+- Pillow (PIL) - for texture generation (optional, textures are pre-generated)
 
-To install Pygame, run:
+To install dependencies, run:
 ```bash
-pip install pygame
+pip install pygame pillow
 ```
 
 ## How to Run ▶️
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/2048.git
-    cd 2048
+    git clone https://github.com/DMelenberg/python-games.git
+    cd python-games/2048
     ```
 
 2. Run the game:
     ```bash
-    python 2048.py
+    python _2048.py
     ```
 
 3. To run the tests:
@@ -54,13 +98,37 @@ pip install pygame
     python -m unittest test_2048.py
     ```
 
+4. (Optional) To regenerate assets:
+    ```bash
+    cd assets
+    python generate_textures.py
+    python generate_sounds.py
+    ```
+
 ## Features 🎮
 
-- **Slide and Combine**: Slide tiles in any direction, and combine tiles with the same value.
-- **Random Tile Generation**: After each move, a new tile appears in a random empty cell.
-- **Score Tracking**: Your score increases with each combination.
-- **Win/Lose Conditions**: The game ends when you reach a 2048 tile (win) or have no possible moves left (lose).
-- **Reset Option**: Restart the game when you win or lose.
+### Core Gameplay
+- **Slide and Combine**: Slide tiles in any direction and combine matching values
+- **Random Tile Generation**: New tiles (2 or 4) appear after each move
+- **Score Tracking**: Current score increases with each merge; best score is saved
+- **Win/Lose Detection**: Automatic detection of game end conditions
+
+### Visual Features
+- **High-Quality Textures**: 256x256px gradient tiles with shadows and highlights
+- **Smooth Rendering**: 60 FPS gameplay with crisp visuals
+- **Professional UI**: Modern menu system with hover effects
+- **Color-Coded Tiles**: Each tile value has a unique, appealing color scheme
+
+### Audio Features
+- **6 Sound Effects**: Move, merge, win, lose, click, and new tile sounds
+- **Volume Control**: Sounds are balanced and pleasant
+- **Toggle Option**: Easily enable/disable sound through settings menu
+
+### Menu System
+- **Main Menu**: Start game, access settings, or exit
+- **Settings Menu**: Configure game preferences (sound toggle)
+- **Pause Menu**: Resume, restart, or return to main menu
+- **Game Over Screens**: Display final score with retry option
 
 ## Code Overview 📝
 
